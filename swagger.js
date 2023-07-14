@@ -1,10 +1,11 @@
 const swaggerAutogen = require('swagger-autogen')();
 const doc = {
     info: {
-        title: 'Project 1',
-        description: 'My first project',
+        title: 'Project 2',
+        description: 'My second project',
     },
-    host: '',
+    host: 'project-2-hj5f.onrender.com',
+    // host: 'localhost:3000',
     schemes: ['https'],
 };
 

@@ -14,24 +14,38 @@ const listClients = async (req, res) => {
     }
 }
 
+const getClient = async (req, res) => {
+    try {
+        const clientId = new ObjectId(req.params.id);
+        const clients = await mongo.getDb().collection('clients');
+        const results = await clients.findOne({_id: clientId});
+        res.send(results).status(200);
+    } catch (err) {
+        res.send(err).status(500);
+    }
+}
+
 
 const createClient = async (req, res) => {
-    console.log(req);
-    const client = {
-        firstName: req.body.firstName,
-        lastName: req.body.lastName,
-        email: req.body.email,
-        birthday: req.body.birthday,
-        diagnosisDate: req.body.diagnosisDate,
-        highLimit: req.body.highLimit,
-        lowLimit: req.body.lowLimit,
-        readings: req.body.readings
-    };
-    const response = await mongo.getDb().collection('clients').insertOne(client);
-    if (response.acknowledged) {
-        res.status(201).json(response);
-    } else {
-        res.status(500).json(response.error || 'client creation failed');
+    try {
+        const client = {
+            firstName: req.body.firstName,
+            lastName: req.body.lastName,
+            email: req.body.email,
+            birthday: req.body.birthday,
+            diagnosisDate: req.body.diagnosisDate,
+            highLimit: req.body.highLimit,
+            lowLimit: req.body.lowLimit,
+            readings: req.body.readings
+        };
+        const response = await mongo.getDb().collection('clients').insertOne(client);
+        if (response.acknowledged) {
+            res.status(201).json(response);
+        } else {
+            res.status(500).json(response.error || 'client creation failed');
+        }
+    } catch (err) {
+        res.send(err).status(500);
     }
 };
 
@@ -57,6 +71,7 @@ const updateClient = async (req, res) => {
 
 module.exports = {
     listClients,
+    getClient,
     createClient,
     updateClient
 }

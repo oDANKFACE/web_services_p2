@@ -1,11 +1,14 @@
 const express = require('express');
 const router = express.Router();
-const {listClients, getClient, createClient, updateClient} = require('../controllers/clients');
+const {clientValidate} = require('../middleware/validator');
+const {listClients, getClient, createClient, updateClient, deleteClient} = require('../controllers/clients');
 
 
 router.get('/', listClients);
 router.get('/:id', getClient);
-router.post('/', createClient);
+router.post('/', clientValidate, createClient);
+router.put('/:id', clientValidate, updateClient);
+router.delete('/:id', deleteClient);
 
 
 

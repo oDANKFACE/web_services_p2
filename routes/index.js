@@ -3,6 +3,7 @@ const router = express.Router();
 
 // router.use('/readings', require('./readings'));
 router.use('/clients', require('./clients'));
+router.use('/readings', require('./readings'));
 router.use('/', require('./swagger'));
 
 

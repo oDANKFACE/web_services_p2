@@ -17,6 +17,10 @@ const port = process.env.PORT || 3000;
 
 app.use('/', router);
 
+process.on('uncaughtException', (error, origin) => {
+    console.log(process.stderr.fd, `Error thrown: ${error} with origin: ${origin}`);
+})
+
 
 app.listen(port, () => {
     console.log('Web Server is listening at port ' + port);

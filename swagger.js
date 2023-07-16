@@ -4,8 +4,10 @@ const doc = {
         title: 'Project 2',
         description: 'My second project',
     },
-    host: 'project-2-hj5f.onrender.com',
     // host: 'localhost:3000',
+    // schemes: ['http'],
+
+    host: 'project-2-hj5f.onrender.com',
     schemes: ['https'],
 };
 

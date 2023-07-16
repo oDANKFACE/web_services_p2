@@ -1,0 +1,73 @@
+// LOCALHOST
+### Get all clients
+GET http://localhost:3000/clients
+
+
+### Get client by id
+GET http://localhost:3000/clients/64b044cb5c0c9f920df41825
+
+
+### Create client
+POST http://localhost:3000/clients HTTP/1.1
+content-type: application/json
+
+{
+  "firstName":"Captain",
+  "lastName":"Kirk",
+  "email":"my@ship.com",
+  "favoriteColor":"Red",
+  "birthday":"03/12/1970"
+}
+
+
+### PUT client
+PUT http://localhost:3000/clients/64b043c75c0c9f920df41822 HTTP/1.1
+content-type: application/json
+
+{
+  "firstName":"Kevin",
+  "lastName":"Kozzzzner",
+  "email":"waterworld@oops.biz",
+  "favoriteColor":"Blueueueue",
+  "birthday":"10/13/1990"
+}
+### DELETE client
+DELETE http://localhost:3000/clients/64b19f73d24be63e5b0626df HTTP/1.1
+
+// PRODUCTION Deploy
+### Get all clients
+GET https://project-2-hj5f.onrender.com/clients
+
+
+### Get client by id
+GET https://project-2-hj5f.onrender.com/clients/64b06526058b9a7ded0bbbae
+
+
+### Create client
+POST https://project-2-hj5f.onrender.com/clients HTTP/1.1
+content-type: application/json
+
+{
+  "firstName":"Captain",
+  "lastName":"Kirk",
+  "email":"my@ship.com",
+  "favoriteColor":"Red",
+  "birthday":"03/12/1970"
+}
+
+
+### PUT client
+PUT https://project-2-hj5f.onrender.com/clients/6220bcb39cd507e920c75a0b HTTP/1.1
+content-type: application/json
+
+{
+  "firstName":"Kevin",
+  "lastName":"Kozzznerrr",
+  "email":"nevermind@oops.biz",
+  "favoriteColor":"Ilikerednow",
+  "birthday":"10/13/1999"
+}
+
+
+### DELETE client
+DELETE https://project-2-hj5f.onrender.com/clients/64b045035c0c9f920df41826 HTTP/1.1

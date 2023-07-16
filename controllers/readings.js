@@ -109,14 +109,16 @@ const updateReading = async (req, res) => {
 
 
 const deleteReading = async (req, res) => {
-    // Not working
 
-    // if (!ObjectId.isValid(readingId)) {
-    //     return res.status(400).json({ message: 'Invalid reading ID format.' });
-    // }
+
     try {
+        // Not working
+        // if (!ObjectId.isValid(readingId)) {
+        //     return res.status(400).json({ message: 'Invalid reading ID format.' });
+        // }
+
         const readingId = req.params.id;
-        const response = await mongo.getDb().collection('readings').deleteOne({ _id: ObjectId(readingId) });
+        const response = await mongo.getDb().collection('readings').deleteOne({ _id: readingId });
         if (response.deletedCount === 0) {
             res.status(404).json({ message: 'Reading not found.' });
         } else {

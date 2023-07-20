@@ -104,36 +104,6 @@
             "in": "path",
             "required": true,
             "type": "string"
-          },
-          {
-            "name": "body",
-            "in": "body",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "firstName": {
-                  "example": "any"
-                },
-                "lastName": {
-                  "example": "any"
-                },
-                "email": {
-                  "example": "any"
-                },
-                "birthday": {
-                  "example": "any"
-                },
-                "diagnosisDate": {
-                  "example": "any"
-                },
-                "highLimit": {
-                  "example": "any"
-                },
-                "lowLimit": {
-                  "example": "any"
-                }
-              }
-            }
           }
         ],
         "responses": {
@@ -266,12 +236,6 @@
               "type": "object",
               "properties": {
                 "clientId": {
-                  "example": "any"
-                },
-                "bg": {
-                  "example": "any"
-                },
-                "readingTime": {
                   "example": "any"
                 }
               }

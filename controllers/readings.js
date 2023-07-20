@@ -81,20 +81,20 @@ const updateReading = async (req, res) => {
             return;
         }
 
-        const newReading = {
-            bg: req.body.bg,
-            readingTime: req.body.readingTime,
-            clientId: clientId
-        }
+        // const newReading = {
+        //     bg: req.body.bg,
+        //     readingTime: req.body.readingTime,
+        //     clientId: clientId
+        // }
+        //
+        // const response = await mongo.getDb().collection('readings').replaceOne({ _id: readingId }, newReading);
 
-        const response = await mongo.getDb().collection('readings').replaceOne({ _id: readingId }, newReading);
-
-        // const newReading = ['bg', 'time']
-        //     .reduce((obj, key) => (req.body[key] ? { ...obj, [key]: req.body[key] } : obj), {});
-        // const response = await mongo.getDb().collection('readings').updateOne(
-        //     { _id: readingId },
-        //     { $set: newReading }
-        // );
+        const newReading = ['bg', 'time']
+            .reduce((obj, key) => (req.body[key] ? { ...obj, [key]: req.body[key] } : obj), {});
+        const response = await mongo.getDb().collection('readings').updateOne(
+            { _id: readingId },
+            { $set: newReading }
+        );
         if (response.acknowledged && response.modifiedCount > 0) {
             res.status(204).json(response);
         } else if (response.acknowledged) {

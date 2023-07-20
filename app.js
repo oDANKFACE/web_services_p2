@@ -34,6 +34,10 @@ app.get('/', (req, res) => {
     res.send(req.oidc.isAuthenticated() ? 'User logged in' : 'User logged out');
 });
 
+app.get('/logout', (req, res) => {
+    req.oidc.logout({ returnTo: process.env.BASE_URL });
+});
+
 app.get('/profile', requiresAuth(), (req, res) => {
     res.send(JSON.stringify(req.oidc.user));
 });

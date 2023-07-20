@@ -72,22 +72,22 @@ const updateClient = async (req, res) => {
         //     return res.status(400).json({message: 'Invalid client ID format.'});
         // }
 
-        // const newInfo = {
-        //     firstName: req.body.firstName,
-        //     lastName: req.body.lastName,
-        //     email: req.body.email,
-        //     birthday: req.body.birthday,
-        //     diagnosisDate: req.body.diagnosisDate,
-        //     highLimit: req.body.highLimit,
-        //     lowLimit: req.body.lowLimit
-        // }
+        const newInfo = {
+            firstName: req.body.firstName,
+            lastName: req.body.lastName,
+            email: req.body.email,
+            birthday: req.body.birthday,
+            diagnosisDate: req.body.diagnosisDate,
+            highLimit: req.body.highLimit,
+            lowLimit: req.body.lowLimit
+        }
+
+        const response = await mongo.getDb().collection('clients').replaceOne({ _id: clientId }, newInfo);
+
+        // const newInfo = ['firstName', 'lastName', 'email', 'birthday', 'diagnosisDate', 'highLimit', 'lowLimit']
+        //     .reduce((obj, key) => (req.body[key] ? { ...obj, [key]: req.body[key] } : obj), {});
         //
-        // const response = await mongo.getDb().collection('clients').replaceOne({ _id: clientId }, newInfo);
-
-        const newInfo = ['firstName', 'lastName', 'email', 'birthday', 'diagnosisDate', 'highLimit', 'lowLimit']
-            .reduce((obj, key) => (req.body[key] ? { ...obj, [key]: req.body[key] } : obj), {});
-
-        const response = await mongo.getDb().collection('clients').updateOne({ _id: clientId }, { $set: newInfo });
+        // const response = await mongo.getDb().collection('clients').updateOne({ _id: clientId }, { $set: newInfo });
 
         if (response.acknowledged && response.modifiedCount > 0) {
             res.status(204).json(response);
